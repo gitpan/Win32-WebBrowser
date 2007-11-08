@@ -11,7 +11,7 @@ our @EXPORT = qw(open_browser);
 use strict;
 use warnings;
 
-our $VERSION = '1.01';
+our $VERSION = '1.02';
 
 #
 #	open a web browser with our file
@@ -31,9 +31,9 @@ sub open_browser {
 # replace the argument PH with our URL
 #
 	$url=~tr/\\/\//;
-	$url = "file://C:$url"
-		unless (substr($url, 0, 7) eq 'http://') ||
-			(substr($url, 0, 7) eq 'file://');
+#	$url = "file://C:$url"
+#		unless (substr($url, 0, 7) eq 'http://') ||
+#			(substr($url, 0, 7) eq 'file://');
 
 	$sysstr=~s/\-nohome//;
 	
@@ -94,6 +94,12 @@ Only a single exported method is provided:
 Create a separate detached process to run the default browser for the platform
 (as specified in the registry) and supply the given C<$url> to it.
 Returns 1 on success, undef with the error message in C<$@> on failure.
+
+=head1 SEE ALSO
+
+L<HTML::Display> provides similar functionality for multiple OSes/platforms,
+but does not currently (as of version 0.39) provide a working
+Windows solution.
 
 =head1 AUTHOR, COPYRIGHT, and LICENSE
 
